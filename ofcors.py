@@ -32,7 +32,7 @@ DEFAULT_THREADS = 5
 MAX_URL_LENGTH = 2000
 MAX_QUOTE_LENGTH = 500
 
-# Common malicious originsl, might need to add more in the future
+# Common malicious origins, might need to add more in the future
 BASE_MALICIOUS_ORIGINS = [
     'https://evil.com',
     'https://attacker.com',
@@ -101,8 +101,8 @@ def analyze_cors_headers(headers, origin, url):
 
             is_same_base_domain = False
             if len(target_parts) >= 2 and len(origin_parts) >= 2:
-                target_base = '.'.join(target_parts[-2:])  # e.g., example.com
-                origin_base = '.'.join(origin_parts[-2:])  # e.g., example.com
+                target_base = '.'.join(target_parts[-2:]) 
+                origin_base = '.'.join(origin_parts[-2:])  
                 if target_base == origin_base:
                     is_same_base_domain = True
 
@@ -120,7 +120,7 @@ def analyze_cors_headers(headers, origin, url):
         # Check for wildcard
         if acao == '*':
             results["issues"].append("Access-Control-Allow-Origin is set to wildcard '*'")
-            results["severity"] = "low"  # Lower severity unless credentials are enabled
+            results["severity"] = "low"  
 
         # Check for origin reflection
         elif acao == origin:
